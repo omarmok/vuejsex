@@ -8,7 +8,7 @@
 
     <title>Timeline</title>
 
-    
+
     <link
       type="text/css"
       rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
- 
+
             <div id="app" class="mt-4">
                 <div class="timeline">
                     <!-- will loop -->
@@ -50,7 +50,7 @@
                                 </b-button>
                             </div>
                         </div>
-                       </div> 
+                       </div>
                        <b-modal id="modal-1" title="تعديل الخبر" ok-title = "حفظ" Cancel-title="إغلاق">
                         <div>
                             <b-form-textarea
@@ -60,62 +60,54 @@
                               rows="3"
                               max-rows="6"
                             ></b-form-textarea>
-                        
+
                           </div>
                       </b-modal>
 
                     <!-- will loop -->
                 </div>
-            
+
             </div>
                 <script>
                         var d = new Date();
                         var n = d.toLocaleString(('ar-EG'));
-                        
+
                     new Vue({
-                       
+
                         el: '#app',
                         data: {
                             maindata: [
                                 {
                                  id:1,
-                                 image:"https://www.moj.gov.sa/PublishingImages/MojPortalNews/Small_Images/MMOJ2020-380.jpg",
-                                 title: 'وزير العدل يعلن اكتمال تفعيل قضاء الاستئناف مرافعة وتدقيقا' ,
+                                 image:"https://www.housing.gov.sa/sites/default/files/styles/news_page_featured/public/MOMRAH%20logo_0.png?itok=-F5Kk2Of",
+                                 title: 'البلدية والإسكان" تطلق حملتها التوعوية لتسوير الأراضي الفضاء' ,
                                  date: n ,
-                                 url: "https://www.moj.gov.sa/ar/MediaCenter/News/Pages/NewsDetails.aspx?itemId=1192 " ,
-                                 edit:' تعديل', 
+                                 url: "https://www.housing.gov.sa/ar/news/2303" ,
+                                 edit:' تعديل',
                                  delete:' حدف'
                                 },
                                 {
                                  id:2,
-                                 image:"https://www.moj.gov.sa/PublishingImages/MojPortalNews/Big_Images/MOJ-40-500.jpg",
-                                 title: 'وزارة العدل: 1.7 مليون عملية توثيق إلكترونية خلال 3 أشهر' ,
+                                 image:"https://www.housing.gov.sa/sites/default/files/styles/news_page_featured/public/%D9%85%D8%B9%D8%B1%D8%B6%20%D9%87%D9%8A%D9%8A%D9%94%D8%A9%20%D8%A7%D9%84%D9%85%D8%AD%D8%AA%D9%88%D9%89%20%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%202.jpeg?itok=mYhupGJF",
+                                 title: 'سكني" يختتم معرضه في مقر هيئة المحتوى المحلي والمشتريات الحكومية' ,
                                  date: n ,
-                                 url: "https://www.moj.gov.sa/ar/MediaCenter/News/Pages/NewsDetails.aspx?itemId=1191" ,
-                                 edit:' تعديل', 
+                                 url: "https://www.housing.gov.sa/ar/news/2302" ,
+                                 edit:' تعديل',
                                  delete:' حدف'
                                 },
                                 {
                                  id:3,
-                                 image:"https://www.moj.gov.sa/PublishingImages/MojPortalNews/Big_Images/IMG-5464649749741548979-500.jpg",
-                                 title: 'وزير العدل يبحث سبل تطوير الشراكة مع محافظ البنك المركزي' ,
+                                 image:"https://www.housing.gov.sa/sites/default/files/styles/news_page_featured/public/%2522%D8%A7%D9%84%D8%A8%D9%84%D8%AF%D9%8A%D8%A9%20%D9%88%D8%A7%D9%84%D8%A7%D9%95%D8%B3%D9%83%D8%A7%D9%86%2522%20%D8%AA%D9%88%D9%82%D8%B9%206%20%D9%85%D8%B0%D9%83%D8%B1%D8%A7%D8%AA%20%D8%AA%D9%81%D8%A7%D9%87%D9%85.jpg?itok=wubtNNLl",
+                                 title: ' "البلدية والإسكان" توقع 6 مذكرات تفاهم لرفع كفاءة قطاع التطوير العقاري' ,
                                  date: n ,
-                                 url: "https://www.moj.gov.sa/ar/MediaCenter/News/Pages/NewsDetails.aspx?itemId=1170 " ,
-                                 edit:' تعديل', 
-                                 delete:' حدف'
-                                },
-                                {
-                                 id:4,
-                                 image:"https://www.moj.gov.sa/PublishingImages/MojPortalNews/Big_Images/IMG-2021-46728385638-500.jpg",
-                                 title: 'وزير العدل يزور محاكم جدة.. ويشدد على وجوب العناية بجودة الأحكام' ,
-                                 date: n ,
-                                 url: "https://www.moj.gov.sa/ar/MediaCenter/News/Pages/NewsDetails.aspx?itemId=1141" ,
-                                 edit:' تعديل', 
+                                 url: "https://www.housing.gov.sa/ar/news/2301" ,
+                                 edit:' تعديل',
                                  delete:' حدف'
                                 },
                                
+
                             ]
-                       
+
                         },
                         methods: {
                             deletenews() {
@@ -125,11 +117,11 @@
                             editnews() {
                                       this.maindata.modal();
                                     },
-                              
+
 
 
                     })
-                
+
                 </script>
   </body>
 </html>
