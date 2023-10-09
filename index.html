@@ -3,161 +3,197 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
     <title>Timeline</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Load polyfills to support older browsers -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+    <script
+      src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
 
-
     <!-- custom font -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
-      <!-- custom font -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- custom font -->
 
-
-      
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
-
-
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-
-            <div id="app" class="mt-4">
-                <div class="timeline">
-                    <!-- will loop -->
-                       <div class="container-custom"  v-for="newsdata in maindata"  >
-                        <div class="content">
-                            <img :src="newsdata.image"  alt="" class="w-100 mb-3">
-                            <h2 > <span >{{newsdata.id}}</span>{{ newsdata.title }} </h2>
-                            <div class="mt-3 mb-3 timeDate"> <i class="fa fa-clock-o"></i> {{ newsdata.date }}</div>
-
-                            <!-- action   -->
-                            <div class="d-flex"  >
-                                 <a :href="newsdata.url" type="button" class="btn btn-light" >تفاصيل الخبر</a>
-                        
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  >
-                                  {{ newsdata.edit }}
-                              </button>
-
-                                
-                                <button  type="button" class="btn btn-danger" @click="deletenews">
-                                    {{ newsdata.delete }}
-                                </button>
-                            </div>
-                          <!--end action  -->
-
-                        </div>
-                       </div>
-
-
-
-
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <div >
-                                  <textarea 
-                                    id="textarea"
-                                    v-model="text"
-                                    placeholder="يرجي إضافة تعديل الخبر"
-                                    rows="3"
-                                    max-rows="6"
-                                    class="form-control "
-                                  ></textarea >
-                             
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                                <button type="button" class="btn btn-primary" @click="updatetext">حفظ</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-
-               
-
-                    <!-- will loop -->
-                </div>
-
+    <div id="app" class="mt-4">
+      <div class="timeline">
+        <!-- will loop -->
+        <div class="container-custom" v-for="newsdata in maindata">
+          <div class="content">
+            <img :src="newsdata.image" alt="" class="w-100 mb-3" />
+            <h2><span>{{newsdata.id}}</span>{{ newsdata.title }}</h2>
+            <div class="mt-3 mb-3 timeDate">
+              <i class="fa fa-clock-o"></i> {{ newsdata.date }}
             </div>
-                <script>
-                        var d = new Date();
-                        var n = d.toLocaleString(('ar-EG'));
 
-                    new Vue({
+            <!-- action   -->
+            <div class="d-flex">
+              <a :href="newsdata.url" type="button" class="btn btn-light"
+                >تفاصيل الخبر</a
+              >
 
-                        el: '#app',
-                        data: {
-                          text: '',
-                            maindata: [
-                                {
-                                 id:1,
-                                 image:"https://www.moi.gov.sa/wps/wcm/connect/506913fd-6dd2-4772-b962-a0ca1d383ab2/01.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-506913fd-6dd2-4772-b962-a0ca1d383ab2-oGDC.83",
-                                 title: 'تحت رعاية سمو الأمير عبدالعزيز بن سعود .. تخريج (9400) رجل أمن من مدن التدريب بمناطق المملكة' ,
-                                 date: n ,
-                                 url: "https://www.moi.gov.sa/wps/portal/Home/sectors/publicsecurity/publicsecurity/contents/!ut/p/z1/pVNLc4IwEL77K_DgqcNkCQHhmForPjoOOljJxQlptGkVFFFrf31jH9M3dKY5bJKd79tvs7tBrGYYtRqa6k0fPppPF8RSvlcLXqgs5Us0RTFzZ9AlJLAI7ncuQgdo2G8Puxc2hjFG18-AVocGpDkA8AYdB7o0iEZ-aNtAbcT-wodfFoUq_gTF5-cobp2NMnJ4i_Y7nJWLfeED9S6BUnsSBM0QD_u4KpteKQAAjXmuRdhn2A8ypQDPegWUlb3qqawq1VjXovkhh8jRgV3c9x3SgVZoo-u9kgcUpVm-0pMyPkVcC3WDYiJJkrhYmJ7veCbxXTCThBCT47kU0uOO9qCgSsEl3xTi1nurK8jWP9PrVbVa_wx1t9kwipjI0kI-FGi6kKnM-dK4UbkURZbzQjbgzbneJUsljK0Uu1wVR4PnDVhxlTYglYfti9VOcav2J9Z6Ozt5ZpZngm9iwLaY6eFZr6IoPSozvB-151dtm8Q9M-7tHwe0Xn8CLDCNVA!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/#Z7_0I44H142K0U530A62K954G0C64" ,
-                                 edit:' تعديل',
-                                 delete:' حدف'
-                                },
-                                {
-                                 id:2,
-                                 image:"https://www.moi.gov.sa/wps/wcm/connect/506913fd-6dd2-4772-b962-a0ca1d383ab2/01.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-506913fd-6dd2-4772-b962-a0ca1d383ab2-oGDC.83",
-                                 title: 'تحت رعاية سمو الأمير عبدالعزيز بن سعود .. تخريج (9400) رجل أمن من مدن التدريب بمناطق المملكة' ,
-                                 date: n ,
-                                 url: "https://www.moi.gov.sa/wps/portal/Home/sectors/publicsecurity/publicsecurity/contents/!ut/p/z1/pVNLc4IwEL77K_DgqcNkCQHhmForPjoOOljJxQlptGkVFFFrf31jH9M3dKY5bJKd79tvs7tBrGYYtRqa6k0fPppPF8RSvlcLXqgs5Us0RTFzZ9AlJLAI7ncuQgdo2G8Puxc2hjFG18-AVocGpDkA8AYdB7o0iEZ-aNtAbcT-wodfFoUq_gTF5-cobp2NMnJ4i_Y7nJWLfeED9S6BUnsSBM0QD_u4KpteKQAAjXmuRdhn2A8ypQDPegWUlb3qqawq1VjXovkhh8jRgV3c9x3SgVZoo-u9kgcUpVm-0pMyPkVcC3WDYiJJkrhYmJ7veCbxXTCThBCT47kU0uOO9qCgSsEl3xTi1nurK8jWP9PrVbVa_wx1t9kwipjI0kI-FGi6kKnM-dK4UbkURZbzQjbgzbneJUsljK0Uu1wVR4PnDVhxlTYglYfti9VOcav2J9Z6Ozt5ZpZngm9iwLaY6eFZr6IoPSozvB-151dtm8Q9M-7tHwe0Xn8CLDCNVA!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/#Z7_0I44H142K0U530A62K954G0C64" ,
-                                 edit:' تعديل',
-                                 delete:' حدف'
-                                },
-                                {
-                                 id:3,
-                                 image:"https://www.moi.gov.sa/wps/wcm/connect/506913fd-6dd2-4772-b962-a0ca1d383ab2/01.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-506913fd-6dd2-4772-b962-a0ca1d383ab2-oGDC.83",
-                                 title: 'تحت رعاية سمو الأمير عبدالعزيز بن سعود .. تخريج (9400) رجل أمن من مدن التدريب بمناطق المملكة' ,
-                                 date: n ,
-                                 url: "https://www.moi.gov.sa/wps/portal/Home/sectors/publicsecurity/publicsecurity/contents/!ut/p/z1/pVNLc4IwEL77K_DgqcNkCQHhmForPjoOOljJxQlptGkVFFFrf31jH9M3dKY5bJKd79tvs7tBrGYYtRqa6k0fPppPF8RSvlcLXqgs5Us0RTFzZ9AlJLAI7ncuQgdo2G8Puxc2hjFG18-AVocGpDkA8AYdB7o0iEZ-aNtAbcT-wodfFoUq_gTF5-cobp2NMnJ4i_Y7nJWLfeED9S6BUnsSBM0QD_u4KpteKQAAjXmuRdhn2A8ypQDPegWUlb3qqawq1VjXovkhh8jRgV3c9x3SgVZoo-u9kgcUpVm-0pMyPkVcC3WDYiJJkrhYmJ7veCbxXTCThBCT47kU0uOO9qCgSsEl3xTi1nurK8jWP9PrVbVa_wx1t9kwipjI0kI-FGi6kKnM-dK4UbkURZbzQjbgzbneJUsljK0Uu1wVR4PnDVhxlTYglYfti9VOcav2J9Z6Ozt5ZpZngm9iwLaY6eFZr6IoPSozvB-151dtm8Q9M-7tHwe0Xn8CLDCNVA!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/#Z7_0I44H142K0U530A62K954G0C64" ,
-                                 edit:' تعديل',
-                                 delete:' حدف'
-                                },
-                               
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                {{ newsdata.edit }}
+              </button>
 
-                            ]
+              <button type="button" class="btn btn-danger" @click="deletenews">
+                {{ newsdata.delete }}
+              </button>
+            </div>
+            <!--end action  -->
+          </div>
+        </div>
 
-                        },
-                        methods: {
-                                    deletenews() {
-                                      this.maindata.shift();
-                                    },
-                                    },
-                                    editnews() {
-                                      this.maindata.modal();
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Modal title
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <textarea
+                    id="textarea"
+                    v-model="text"
+                    placeholder="يرجي إضافة تعديل الخبر"
+                    rows="3"
+                    max-rows="6"
+                    class="form-control"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  اغلاق
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="updatetext"
+                >
+                  حفظ
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- will loop -->
+      </div>
+    </div>
+    <script>
+      var d = new Date();
+      var n = d.toLocaleString("ar-EG");
 
-                                    },
-                                    updatetext() {
-                                      this.text = 'update text'
-                                    }
-                    })
-
-                </script>
+      new Vue({
+        el: "#app",
+        data: {
+          text: "",
+          maindata: [
+            {
+              id: 1,
+              image:
+                "https://shorturl.at/krCI4",
+              title:
+                " القوات الخاصة للأمن والحماية تشارك في معرض إنترسك السعودية ",
+              date: n,
+              url: "https://10.5.15.205/PS.Cases.Web/Records/List",
+              edit: " تعديل",
+              delete: " حدف",
+            },
+            {
+              id: 2,
+              image:
+                "https://shorturl.at/krCI4",
+              title:
+                "تحت رعاية سمو الأمير عبدالعزيز بن سعود .. تخريج (9400) رجل أمن من مدن التدريب بمناطق المملكة",
+              date: n,
+              url: "https://10.5.15.205/PS.Cases.Web/Records/List",
+              edit: " تعديل",
+              delete: " حدف",
+            },
+            {
+              id: 3,
+              image:
+                "https://shorturl.at/krCI4",
+              title:
+                "تحت رعاية سمو الأمير عبدالعزيز بن سعود .. تخريج (9400) رجل أمن من مدن التدريب بمناطق المملكة",
+              date: n,
+              url: "https://10.5.15.205/PS.Cases.Web/Records/List",
+              edit: " تعديل",
+              delete: " حدف",
+            },
+          ],
+        },
+        methods: {
+          deletenews() {
+            this.maindata.shift();
+          },
+        },
+        editnews() {
+          this.maindata.modal();
+        },
+        updatetext() {
+          this.text = "update text";
+        },
+      });
+    </script>
   </body>
 </html>
