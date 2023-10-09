@@ -1,17 +1,14 @@
 * {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body {
   background-color: #fff;
-  font-family: 'Cairo', sans-serif;
+  font-family: "Cairo", sans-serif;
   direction: rtl;
 }
 
 .d-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -19,19 +16,12 @@ body {
   position: relative;
   max-width: 890px;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
-
 .timeline::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 2px;
   background-color: #bfbfbf;
@@ -47,49 +37,36 @@ body {
   background-color: inherit;
   width: 50%;
 }
-
 .container-custom .content {
   padding: 15px;
   background-color: white;
   position: relative;
   border: 1px solid #bfbfbf;
 }
-
 .container-custom .content h2 {
   font-size: 14px;
   margin: 0;
   color: #157C6A;
   line-height: 1.5;
   margin-bottom: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .container-custom .content h2 span {
   background: #8bc34a;
-  color: white;
+  color: rgb(255, 255, 255);
   border-radius: 50%;
   height: 25px;
   width: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
   font-size: 13px;
   margin-left: 5px;
 }
-
 .container-custom .content .timeDate {
   color: #bfbfbf;
 }
-
 .container-custom .content .btn {
   padding: 5px 20px;
   margin: 5px;
@@ -100,7 +77,7 @@ body {
 }
 
 .container-custom:nth-child(odd)::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 15px;
   height: 15px;
@@ -146,7 +123,7 @@ body {
 }
 
 .container-custom:nth-child(even):after {
-  content: '';
+  content: "";
   position: absolute;
   width: 15px;
   height: 15px;
@@ -248,5 +225,4 @@ body {
     border-width: 9px;
     margin-top: -28px;
   }
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

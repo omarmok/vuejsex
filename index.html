@@ -8,27 +8,29 @@
 
     <title>Timeline</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"
-    />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"
-    />
 
+    <!-- Load polyfills to support older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
-    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 
+
+    <!-- custom font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+      <!-- custom font -->
+
+
+      
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+
   </head>
   <body>
 
@@ -37,35 +39,62 @@
                     <!-- will loop -->
                        <div class="container-custom"  v-for="newsdata in maindata"  >
                         <div class="content">
-                            <img :src="newsdata.image" style="width:100%;" alt="" class="mb-3">
+                            <img :src="newsdata.image"  alt="" class="w-100 mb-3">
                             <h2 > <span >{{newsdata.id}}</span>{{ newsdata.title }} </h2>
-                            <div class="mt-3 mb-3 timeDate " > <i class="fa fa-clock-o"></i> {{ newsdata.date }}</div>
+                            <div class="mt-3 mb-3 timeDate"> <i class="fa fa-clock-o"></i> {{ newsdata.date }}</div>
+
+                            <!-- action   -->
                             <div class="d-flex"  >
-                                 <a :href=" newsdata.url" class="btn  alert-success" >تفاصيل الخبر</a>
-                                <b-button variant="primary"  class="btn  alert-primary" v-b-modal.modal-1  @click="editnews">
-                                    {{ newsdata.edit }}
-                                </b-button>
-                                <b-button variant="danger" class="btn alert-danger" @click="deletenews">
+                                 <a :href="newsdata.url" type="button" class="btn btn-light" >تفاصيل الخبر</a>
+                        
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  >
+                                  {{ newsdata.edit }}
+                              </button>
+
+                                
+                                <button  type="button" class="btn btn-danger" @click="deletenews">
                                     {{ newsdata.delete }}
-                                </b-button>
+                                </button>
                             </div>
+                          <!--end action  -->
+
                         </div>
                        </div>
-                       <b-modal id="modal-1" title="تعديل الخبر" ok-title = "حفظ" Cancel-title="إغلاق"  hide-footer>
-                        <div >
-                            <b-form-textarea
-                              id="textarea"
-                              v-model="text"
-                              placeholder="يرجي إضافة تعديل الخبر"
-                              rows="3"
-                              max-rows="6"
-                            ></b-form-textarea>
-                       
-                          </div>
-                          <button primary class="btn btn-primary mt-3" @click="updatetext">حفظ</button>
-                          <b-button block @click="$bvModal.hide('modal-1')" class="mt-3">اغلاق</b-button>
 
-                      </b-modal>
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div >
+                                  <textarea 
+                                    id="textarea"
+                                    v-model="text"
+                                    placeholder="يرجي إضافة تعديل الخبر"
+                                    rows="3"
+                                    max-rows="6"
+                                    class="form-control "
+                                  ></textarea >
+                             
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                                <button type="button" class="btn btn-primary" @click="updatetext">حفظ</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
                
 
                     <!-- will loop -->
@@ -84,28 +113,28 @@
                             maindata: [
                                 {
                                  id:1,
-                                 image:"https://www.housing.gov.sa/sites/default/files/styles/news_page_featured/public/MOMRAH%20logo_0.png?itok=-F5Kk2Of",
-                                 title: 'البلدية والإسكان" تطلق حملتها التوعوية لتسوير الأراضي الفضاء' ,
+                                 image:"https://www.moi.gov.sa/wps/wcm/connect/506913fd-6dd2-4772-b962-a0ca1d383ab2/01.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-506913fd-6dd2-4772-b962-a0ca1d383ab2-oGDC.83",
+                                 title: 'تحت رعاية سمو الأمير عبدالعزيز بن سعود .. تخريج (9400) رجل أمن من مدن التدريب بمناطق المملكة' ,
                                  date: n ,
-                                 url: "https://www.housing.gov.sa/ar/news/2303" ,
+                                 url: "https://www.moi.gov.sa/wps/portal/Home/sectors/publicsecurity/publicsecurity/contents/!ut/p/z1/pVNLc4IwEL77K_DgqcNkCQHhmForPjoOOljJxQlptGkVFFFrf31jH9M3dKY5bJKd79tvs7tBrGYYtRqa6k0fPppPF8RSvlcLXqgs5Us0RTFzZ9AlJLAI7ncuQgdo2G8Puxc2hjFG18-AVocGpDkA8AYdB7o0iEZ-aNtAbcT-wodfFoUq_gTF5-cobp2NMnJ4i_Y7nJWLfeED9S6BUnsSBM0QD_u4KpteKQAAjXmuRdhn2A8ypQDPegWUlb3qqawq1VjXovkhh8jRgV3c9x3SgVZoo-u9kgcUpVm-0pMyPkVcC3WDYiJJkrhYmJ7veCbxXTCThBCT47kU0uOO9qCgSsEl3xTi1nurK8jWP9PrVbVa_wx1t9kwipjI0kI-FGi6kKnM-dK4UbkURZbzQjbgzbneJUsljK0Uu1wVR4PnDVhxlTYglYfti9VOcav2J9Z6Ozt5ZpZngm9iwLaY6eFZr6IoPSozvB-151dtm8Q9M-7tHwe0Xn8CLDCNVA!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/#Z7_0I44H142K0U530A62K954G0C64" ,
                                  edit:' تعديل',
                                  delete:' حدف'
                                 },
                                 {
                                  id:2,
-                                 image:"https://www.housing.gov.sa/sites/default/files/styles/news_page_featured/public/%D9%85%D8%B9%D8%B1%D8%B6%20%D9%87%D9%8A%D9%8A%D9%94%D8%A9%20%D8%A7%D9%84%D9%85%D8%AD%D8%AA%D9%88%D9%89%20%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%202.jpeg?itok=mYhupGJF",
-                                 title: 'سكني" يختتم معرضه في مقر هيئة المحتوى المحلي والمشتريات الحكومية' ,
+                                 image:"https://www.moi.gov.sa/wps/wcm/connect/506913fd-6dd2-4772-b962-a0ca1d383ab2/01.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-506913fd-6dd2-4772-b962-a0ca1d383ab2-oGDC.83",
+                                 title: 'تحت رعاية سمو الأمير عبدالعزيز بن سعود .. تخريج (9400) رجل أمن من مدن التدريب بمناطق المملكة' ,
                                  date: n ,
-                                 url: "https://www.housing.gov.sa/ar/news/2302" ,
+                                 url: "https://www.moi.gov.sa/wps/portal/Home/sectors/publicsecurity/publicsecurity/contents/!ut/p/z1/pVNLc4IwEL77K_DgqcNkCQHhmForPjoOOljJxQlptGkVFFFrf31jH9M3dKY5bJKd79tvs7tBrGYYtRqa6k0fPppPF8RSvlcLXqgs5Us0RTFzZ9AlJLAI7ncuQgdo2G8Puxc2hjFG18-AVocGpDkA8AYdB7o0iEZ-aNtAbcT-wodfFoUq_gTF5-cobp2NMnJ4i_Y7nJWLfeED9S6BUnsSBM0QD_u4KpteKQAAjXmuRdhn2A8ypQDPegWUlb3qqawq1VjXovkhh8jRgV3c9x3SgVZoo-u9kgcUpVm-0pMyPkVcC3WDYiJJkrhYmJ7veCbxXTCThBCT47kU0uOO9qCgSsEl3xTi1nurK8jWP9PrVbVa_wx1t9kwipjI0kI-FGi6kKnM-dK4UbkURZbzQjbgzbneJUsljK0Uu1wVR4PnDVhxlTYglYfti9VOcav2J9Z6Ozt5ZpZngm9iwLaY6eFZr6IoPSozvB-151dtm8Q9M-7tHwe0Xn8CLDCNVA!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/#Z7_0I44H142K0U530A62K954G0C64" ,
                                  edit:' تعديل',
                                  delete:' حدف'
                                 },
                                 {
                                  id:3,
-                                 image:"https://www.housing.gov.sa/sites/default/files/styles/news_page_featured/public/%2522%D8%A7%D9%84%D8%A8%D9%84%D8%AF%D9%8A%D8%A9%20%D9%88%D8%A7%D9%84%D8%A7%D9%95%D8%B3%D9%83%D8%A7%D9%86%2522%20%D8%AA%D9%88%D9%82%D8%B9%206%20%D9%85%D8%B0%D9%83%D8%B1%D8%A7%D8%AA%20%D8%AA%D9%81%D8%A7%D9%87%D9%85.jpg?itok=wubtNNLl",
-                                 title: ' "البلدية والإسكان" توقع 6 مذكرات تفاهم لرفع كفاءة قطاع التطوير العقاري' ,
+                                 image:"https://www.moi.gov.sa/wps/wcm/connect/506913fd-6dd2-4772-b962-a0ca1d383ab2/01.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-506913fd-6dd2-4772-b962-a0ca1d383ab2-oGDC.83",
+                                 title: 'تحت رعاية سمو الأمير عبدالعزيز بن سعود .. تخريج (9400) رجل أمن من مدن التدريب بمناطق المملكة' ,
                                  date: n ,
-                                 url: "https://www.housing.gov.sa/ar/news/2301" ,
+                                 url: "https://www.moi.gov.sa/wps/portal/Home/sectors/publicsecurity/publicsecurity/contents/!ut/p/z1/pVNLc4IwEL77K_DgqcNkCQHhmForPjoOOljJxQlptGkVFFFrf31jH9M3dKY5bJKd79tvs7tBrGYYtRqa6k0fPppPF8RSvlcLXqgs5Us0RTFzZ9AlJLAI7ncuQgdo2G8Puxc2hjFG18-AVocGpDkA8AYdB7o0iEZ-aNtAbcT-wodfFoUq_gTF5-cobp2NMnJ4i_Y7nJWLfeED9S6BUnsSBM0QD_u4KpteKQAAjXmuRdhn2A8ypQDPegWUlb3qqawq1VjXovkhh8jRgV3c9x3SgVZoo-u9kgcUpVm-0pMyPkVcC3WDYiJJkrhYmJ7veCbxXTCThBCT47kU0uOO9qCgSsEl3xTi1nurK8jWP9PrVbVa_wx1t9kwipjI0kI-FGi6kKnM-dK4UbkURZbzQjbgzbneJUsljK0Uu1wVR4PnDVhxlTYglYfti9VOcav2J9Z6Ozt5ZpZngm9iwLaY6eFZr6IoPSozvB-151dtm8Q9M-7tHwe0Xn8CLDCNVA!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/#Z7_0I44H142K0U530A62K954G0C64" ,
                                  edit:' تعديل',
                                  delete:' حدف'
                                 },
@@ -115,21 +144,18 @@
 
                         },
                         methods: {
-                            deletenews() {
+                                    deletenews() {
                                       this.maindata.shift();
                                     },
-                                },
-                            editnews() {
+                                    },
+                                    editnews() {
                                       this.maindata.modal();
-                                  
+
 
                                     },
                                     updatetext() {
                                       this.text = 'update text'
-                                  }
-
-
-
+                                    }
                     })
 
                 </script>
