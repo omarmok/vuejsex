@@ -61,16 +61,12 @@
 
             <!-- action   -->
             <div class="d-flex">
-              <a :href="newsdata.url" type="button" class="btn btn-light"
-                >تفاصيل الخبر</a
-              >
-
+              <a :href="newsdata.url" type="button" class="btn btn-light">تفاصيل الخبر</a>
               <button
                 type="button"
                 class="btn btn-primary"
                 data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              >
+                data-bs-target="#exampleModal" >
                 {{ newsdata.edit }}
               </button>
 
@@ -88,8 +84,7 @@
           id="exampleModal"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
+          aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
